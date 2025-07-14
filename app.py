@@ -5,10 +5,16 @@ from flask import Flask, request, render_template, session, flash, redirect, \
     url_for, jsonify
 from flask_mail import Mail, Message
 from celery import Celery
+from treebeardhq import Treebeard, TreebeardFlask
 
+# Initialize Treebeard
+Treebeard.init(project_name="flask-celery-example", api_key="tb_prod_2guZ23QxpDUZQ1mhJNgda4ofQw_gmfP4f3HEWGheT0g")
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'top-secret!'
+
+# Instrument Flask app with Treebeard
+TreebeardFlask.instrument(app)
 
 # Flask-Mail configuration
 app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
