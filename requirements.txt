@@ -8,6 +8,7 @@ Flask-Mail==0.9.1
 itsdangerous==1.1.0
 Jinja2==2.10.1
 kombu==4.6.8
+lumberjack>=0.4.20
 MarkupSafe==1.1.1
 pytz==2019.1
 redis==3.4.1

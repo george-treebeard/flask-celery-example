@@ -5,9 +5,17 @@ from flask import Flask, request, render_template, session, flash, redirect, \
     url_for, jsonify
 from flask_mail import Mail, Message
 from celery import Celery
+from lumberjack_sdk import Lumberjack, LumberjackFlask
 
+
+# Initialize Lumberjack first
+Lumberjack.init(project_name="flask-celery-example", api_key="tb_prod_mg2Ne5vZg33TbdYwj7V8VM3DU0y8YaFavwEqnyjW-Jo")
 
 app = Flask(__name__)
+
+# Instrument the Flask app
+LumberjackFlask.instrument(app)
+
 app.config['SECRET_KEY'] = 'top-secret!'
 
 # Flask-Mail configuration
